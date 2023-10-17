@@ -24,18 +24,13 @@ return (s);
  */
 void ffree(char **pp)
 {
+char **a = pp;
+
 if (!pp)
-return; /*Handle NULL input gracefully*/
-
-/*Free individual strings and reset array elements to NULL*/
-for (size_t i = 0; pp[i] != NULL; ++i)
-{
-free(pp[i]);
-pp[i] = NULL;
-}
-
-/*Free the string array itself*/
-free(pp);
+return;
+while (*pp)
+free(*pp++);
+free(a);
 }
 
 /**
@@ -47,31 +42,24 @@ free(pp);
  *
  * Return: pointer to da ol'block nameen.
  */
-void *_realloc(void *ptr, size_t old_size, size_t new_size)
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-if (new_size == 0)
-{
-free(ptr);
+char *p;
+
+if (!ptr)
+return (malloc(new_size));
+if (!new_size)
+return (free(ptr), NULL);
+if (new_size == old_size)
+return (ptr);
+
+p = malloc(new_size);
+if (!p)
 return (NULL);
-}
 
-if (ptr == (NULL))
-{
-return (malloc new_size);
-}
-
-void *new_ptr = malloc(new_size);
-if (new_ptr == NULL)
-{
-return (NULL);
-}
-
-size_t min_size = (old_size < new_size) ? old_size : new_size;
-if (min_size > 0)
-{
-memcpy(new_ptr, ptr, min_size);
-}
-
+old_size = old_size < new_size ? old_size : new_size;
+while (old_size--)
+p[old_size] = ((char *)ptr)[old_size];
 free(ptr);
-return (new_ptr);
+return (p);
 }
