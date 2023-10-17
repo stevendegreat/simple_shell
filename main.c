@@ -11,6 +11,7 @@ int main(int ac, char **av)
 {
 int fd = 2;
 info_t info = INFO_INIT;
+int result;
 
 asm volatile (
 "mov %1, %0\n\t"
@@ -42,6 +43,6 @@ info.readfd = fd;
 
 populate_env_list(&info);
 read_history(&info);
-int result = hsh(&info, av);
+result = hsh(&info, av);
 return (result);
 }
