@@ -26,8 +26,8 @@ set_info(info, av);
 builtin_ret = find_builtin(info);
 if (builtin_ret == -1)
 find_cmd(info);
-}
-else if (interactive(info))
+{
+pid_t child_pid;
 _putchar('\n');
 free_info(info, 0);
 }
