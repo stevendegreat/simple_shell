@@ -67,10 +67,6 @@ return (cmd);
 }
 while (1)
 {
-if (!pathstr)
-return (NULL);
-if ((_strlen(cmd) > 2) && starts_with(cmd, "./"))
-{
 if (!pathstr[i] || pathstr[i] == ':')
 {
 path = dup_chars(pathstr, curr_pos, i);
@@ -89,5 +85,6 @@ curr_pos = i;
 }
 i++;
 }
+/*Command not found, return NULL*/
 return (NULL);
 }
