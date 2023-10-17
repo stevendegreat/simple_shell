@@ -17,7 +17,7 @@ while (r != -1 && builtin_ret != -2)
 {
 clear_info(info);
 if (interactive(info))
-_puts("$ ");
+ _puts("$ ");
 _eputchar(BUF_FLUSH);
 r = get_input(info);
 if (r != -1)
@@ -26,8 +26,8 @@ set_info(info, av);
 builtin_ret = find_builtin(info);
 if (builtin_ret == -1)
 find_cmd(info);
-{
-pid_t child_pid;
+}
+else if (interactive(info))
 _putchar('\n');
 free_info(info, 0);
 }
