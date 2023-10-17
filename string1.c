@@ -10,17 +10,18 @@
  */
 char *_strcpy(char *dest, char *src)
 {
-dest[i] = src[i];
-i++;
-}
-dest[i] = 0;
-return (dest);
-{
 int i = 0;
 
 if (dest == src || src == 0)
 return (dest);
+
 while (src[i])
+{
+dest[i] = src[i];
+i++;
+}
+dest[i] = '\0'; /*Null-terminate the destination string*/
+return (dest);
 }
 
 /**
