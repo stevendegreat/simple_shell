@@ -1,5 +1,6 @@
 #include "shell.h"
 
+
 /**
  * _strlen - returns the length of a string
  * a function that returns length of a string
@@ -9,21 +10,15 @@
  */
 int _strlen(char *s)
 {
-int length = 0;
+int i = 0;
 
-if (s == NULL)
-return (0);  /*Handle NULL input*/
-}
+if (!s)
+return (0);
 
-while (*s != '\0')
-{
-length++;
-s++;
+while (*s++)
+i++;
+return (i);
 }
-
-return (length);
-}
-Here are the
 
 /**
  * _strcmp - performs lexicogarphic comparison of two strangs.
@@ -64,6 +59,7 @@ return (NULL);
 return ((char *)haystack);
 }
 
+
 /**
  * _strcat - concatenates two strings
  * @dest: the destination buffer
@@ -73,7 +69,7 @@ return ((char *)haystack);
  */
 char *_strcat(char *dest, char *src)
 {
-char = dest;
+char *ret = dest;
 
 while (*dest)
 dest++;
